@@ -280,7 +280,91 @@ async function createInitialFundsTransaction(req, res) {
 }
 
 
+async function deleteTransaction(req, res) {
+    const { id } = req.params;
+
+    try {
+        const deletedTransaction = await transactionModel.findByIdAndDelete(id);
+
+        if (!deletedTransaction) {
+            return res.status(404).json({
+                message: "Transaction not found"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Transaction deleted successfully",
+            transaction: deletedTransaction
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Failed to delete transaction",
+            error: error.message
+        });
+    }
+}
+
+async function getTransactions(req, res) {
+    try {
+        const transactions = await transactionModel.find()
+            .populate('fromAccount', 'accountNumber status')
+            .populate('toAccount', 'accountNumber status');
+        
+        return res.status(200).json({
+            message: "Transactions retrieved successfully",
+            transactions
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Failed to retrieve transactions",
+            error: error.message
+        });
+    }
+}
+
+async function updateTransactionStatus(req, res) {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const validStatuses = ["PENDING", "COMPLETED", "FAILED", "REVERSED"];
+
+    if (!status || !validStatuses.includes(status)) {
+        return res.status(400).json({
+            message: `Invalid status. Status must be one of: ${validStatuses.join(', ')}`
+        });
+    }
+
+    try {
+        const updatedTransaction = await transactionModel.findByIdAndUpdate(
+            id,
+            { status },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedTransaction) {
+            return res.status(404).json({
+                message: "Transaction not found"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Transaction status updated successfully",
+            transaction: updatedTransaction
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Failed to update transaction status",
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
     createTransaction,
-    createInitialFundsTransaction
+    createInitialFundsTransaction,
+    deleteTransaction,
+    getTransactions,
+    updateTransactionStatus
 }
