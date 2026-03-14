@@ -1,0 +1,71 @@
+{
+  "info": {
+    "_postman_id": "bdd1c213-096d-4ebb-ab70-4b859c3b846f",
+    "name": "legder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52201309",
+    "_collection_link": "https://go.postman.co/collection/52201309-bdd1c213-096d-4ebb-ab70-4b859c3b846f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "system initial funds",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"toAccount\":\"69b4fcfe96ecf99af6056a3c\",\r\n    \"amount\" :10000,\r\n    \"idempotencyKey:\"bebb4bfa-fa04-43ae-99be-8d45ef2e373d\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/transactions/system/initial-funds",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "transactions",
+            "system",
+            "initial-funds"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system initial funds Copy",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"toAccount\":\"69b4fcfe96ecf99af6056a3c\",\r\n    \"amount\" :10000,\r\n    \"idempotencyKey:\"bebb4bfa-fa04-43ae-99be-8d45ef2e373d\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/transactions/system/initial-funds",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "transactions",
+            "system",
+            "initial-funds"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "transcation",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

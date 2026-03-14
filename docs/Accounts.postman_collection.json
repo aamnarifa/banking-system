@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "c63543b5-2043-42e7-a741-efbcf89232ba",
+    "name": "Accounts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52201309",
+    "_collection_link": "https://go.postman.co/collection/52201309-c63543b5-2043-42e7-a741-efbcf89232ba?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create-Account",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"INR\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get accounts",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "get balance",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"INR\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/accounts/balance/69b17a3b8495b0ce846aa091",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "accounts",
+            "balance",
+            "69b17a3b8495b0ce846aa091"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
